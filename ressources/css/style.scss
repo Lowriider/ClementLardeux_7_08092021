@@ -7,12 +7,52 @@
     @include header-style;
 }
 
-main {}
-
 .search {
-   @include bar-template;
+    @include bar-template;
 }
 
 .list {
     @include buttons-template;
+}
+
+.recipes {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0 85px 20px 85px;
+    &__article {
+        background-color: #E7E7E7;
+        border-radius: .3125rem;
+        height: 364px;
+        margin-bottom: 2.5rem;
+        position: relative;
+        width: 380px;
+    }
+    &__image {
+        width: 380px;
+        height: 178px;
+    }
+    &__text {
+        
+    }
+    &__title {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        margin:25px 20px;
+    }
+    &__infos {
+        display: flex;
+        justify-content: space-between;
+        margin:25px 20px;
+    }
+    &__ingredients, &__instructions {
+        font-size: 12px;
+        width: 171px;
+        height: 109px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+
+    }
 }

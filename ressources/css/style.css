@@ -93,4 +93,41 @@ a {
   align-items: center;
 }
 
+.recipes {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 85px 20px 85px;
+}
+.recipes__article {
+  background-color: #E7E7E7;
+  border-radius: 0.3125rem;
+  height: 364px;
+  margin-bottom: 2.5rem;
+  position: relative;
+  width: 380px;
+}
+.recipes__image {
+  width: 380px;
+  height: 178px;
+}
+.recipes__title {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 25px 20px;
+}
+.recipes__infos {
+  display: flex;
+  justify-content: space-between;
+  margin: 25px 20px;
+}
+.recipes__ingredients, .recipes__instructions {
+  font-size: 12px;
+  width: 171px;
+  height: 109px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 /*# sourceMappingURL=style.css.map */
