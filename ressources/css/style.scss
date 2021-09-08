@@ -1,0 +1,18 @@
+@import './utils/mixins';
+@import './utils/var';
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+@include general-style-home;
+
+.header {
+    @include header-style;
+}
+
+main {}
+
+.search {
+   @include bar-template;
+}
+
+.list {
+    @include buttons-template;
+}

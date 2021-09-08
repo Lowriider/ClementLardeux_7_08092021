@@ -1,0 +1,156 @@
+@mixin general-style-home {
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: $font;
+        list-style-type: none;
+    }
+
+    body {}
+
+    h1 {}
+
+    h2 {}
+
+    a {
+        text-decoration: none;
+    }
+}
+
+
+@mixin header-style {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+@mixin bar-template {
+    margin: 25px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__bar {
+        display: flex;
+        width: 1240px;
+        height: 69px;
+        background: $grey;
+        border-radius: 5px;
+        border: none;
+    }
+
+    &__bar::placeholder {
+        font-family: Lato;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 22px;
+        position: relative;
+        left: 15px;
+    }
+
+    &__button {
+        position: relative;
+        right: 50px;
+    }
+}
+
+@mixin recipes-template {}
+
+@mixin buttons-template {
+    width: 550px;
+    margin: 0 85px 20px 85px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &__buttons--blue {
+        background-color: $blue;
+        color: #FFFFFF;
+        width: 170px;
+        height: 69px;
+        border-radius: 5px;
+        text-align: center;
+        line-height: 22px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    &__buttons--green {
+        background-color: $green;
+        color: #FFFFFF;
+        width: 170px;
+        height: 69px;
+        border-radius: 5px;
+        text-align: center;
+        line-height: 22px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    &__buttons--red {
+        background-color: $red;
+        color: #FFFFFF;
+        width: 170px;
+        height: 69px;
+        border-radius: 5px;
+        text-align: center;
+        line-height: 22px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+}
+
+
+/*********************
+BREAKPOINTS
+*********************/
+
+@mixin breakpoint($point) {
+    @if $point==wide {
+        @media (min-width:1441px) {
+            @content ;
+        }
+    }
+
+    @if $point==desktop {
+        @media (min-width:1340px) {
+            @content ;
+        }
+    }
+
+    @else if $point==laptop {
+        @media (min-width: 1024px) {
+            @content ;
+        }
+    }
+
+    @else if $point==tablet {
+        @media (min-width: 768px) {
+            @content ;
+        }
+    }
+
+    @else if $point==mobileL {
+        @media (min-width: 580px) {
+            @content ;
+        }
+    }
+
+    @else if $point==mobileS {
+        @media (min-width: 375px) {
+            @content ;
+        }
+    }
+
+    @else if $point==mobileXS {
+        @media (max-width: 350px) {
+            @content ;
+        }
+    }
+}
