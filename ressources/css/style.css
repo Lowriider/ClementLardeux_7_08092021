@@ -56,6 +56,9 @@ a {
   flex-direction: row;
   justify-content: space-between;
 }
+.list__list {
+  display: none;
+}
 .list__buttons--blue {
   background-color: #3282F7;
   color: #FFFFFF;
@@ -115,19 +118,20 @@ a {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  font-size: 18px;
   margin: 25px 20px;
 }
 .recipes__infos {
   display: flex;
   justify-content: space-between;
   margin: 25px 20px;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .recipes__ingredients, .recipes__instructions {
   font-size: 12px;
   width: 171px;
   height: 109px;
-  text-overflow: ellipsis;
-  overflow: hidden;
 }
 
 /*# sourceMappingURL=style.css.map */
