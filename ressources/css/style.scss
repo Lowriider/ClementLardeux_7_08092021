@@ -14,12 +14,24 @@
 .list {
     @include buttons-template;
 }
+.search-result {
+    display: flex;
+    display: none;
+    background-color: rgb(196, 220, 255);
+    border-radius: 5px;
+    border: none;
+    font-size: 1.2rem;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    padding: 1rem;
+}
 
 .recipes {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin: 0 85px 20px 85px;
+    margin-bottom:20px;
     &__article {
         background-color: #E7E7E7;
         border-radius: .3125rem;

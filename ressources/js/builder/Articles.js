@@ -1,8 +1,7 @@
 'use strict';
 
 export default class ArticleTemplate {
-    constructor(recipesArray) {
-        this.displayRecipes(recipesArray);
+    constructor() {
     }
     
     displayRecipes(recipesArray) {
