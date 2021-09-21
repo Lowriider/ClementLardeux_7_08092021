@@ -99,7 +99,7 @@ input[type="text"] {
         display: flex;
         justify-content: space-around;
         align-items: center;
-        transition: linear .3s;
+      
     }
 
 
@@ -114,7 +114,6 @@ input[type="text"] {
         display: flex;
         justify-content: space-around;
         align-items: center;
-        transition: linear .3s;
         margin-left: 32px;
         margin-right: 32px;
     }
@@ -130,36 +129,47 @@ input[type="text"] {
         display: flex;
         justify-content: space-around;
         align-items: center;
-        transition: linear .3s;
     }
     
-    &__hidden {
+    #blueHidden {
         display: none;
         flex-direction: column;
-        position: absolute;
-        top: 15.6rem;
-        left: 85px;
-        width: 35rem;
+        position: relative;
+        top: 31.3rem;
+        width: 45rem;
+        z-index: 10;
+    }
+    #greenHidden {
+        display: none;
+        flex-direction: column;
+        position: relative;
+        top:31.3rem;
+        width: 15rem;
+        z-index: 10;
+    }
+    #redHidden {
+        display: none;
+        flex-direction: column;
+        position: relative;
+        top: 31.3rem;
+        width: 15rem;
         z-index: 10;
     }
     
-    
-    &__input--blue,
-    &__input--green,
-    &__input--red {
+   .blue,
+   .green,
+   .red {
         border-top-right-radius: 5px;
         border-top-left-radius: 5px;
         display: flex;
-        justify-content: space-between;
         align-items: center;
         input {
-            height: 80px;
-            width:70% ;
-            
+            height: 40px;
+            width:100%;
         }
     }
 
-    &__input--blue {
+   .blue {
         
         background-color: $blue;
         
@@ -169,31 +179,29 @@ input[type="text"] {
             background-color: $blue;
             border: none;
             color: #FFFFFF;
-            // opacity: 0.5;
         }
     }
     
-    &__input--green {
+   .green {
         input {
             padding-left: 7px;
             margin-left: 18px;
             background-color: $green;
             border: none;
             color: #FFFFFF;
-            // opacity: 0.5;
         }
     }
     
-    &__input--red {
+   .red {
         input {
             padding-left: 7px;
             margin-left: 18px;
             background-color: $red;
             border: none;
             color: #FFFFFF;
-            // opacity: 0.5;
         }
     }
+
     &__arrow {
         padding-right: 20px;
     }
@@ -219,11 +227,11 @@ input[type="text"] {
     }
     
     &__ul {
-        width: 600px;
+        width: 140px;
         display: flex;
         flex-wrap: wrap;
         flex-direction: column;
-        height: fit-content;
+        height: 1000px;
         justify-content: space-evenly;
         padding: .5rem;
 
@@ -232,7 +240,7 @@ input[type="text"] {
             flex-direction: row;
             font-size: 1.21rem;
             overflow: hidden;
-            padding: .5rem 1rem;
+            padding: .3rem 1rem;
             text-align: start;
             text-overflow: ellipsis;
             white-space: nowrap;

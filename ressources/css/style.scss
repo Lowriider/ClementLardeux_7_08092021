@@ -10,7 +10,37 @@
 .search {
     @include bar-template;
 }
-
+.tags {
+    display: none;
+    margin-bottom: 20px;
+    width: 400px;
+    li {
+        border-radius: 5px;
+        justify-content: space-evenly;
+        align-items: center;
+        display: none;
+        height: 40px;
+        width: 120px;
+        margin-right: 20px;
+        p {
+            height: 20px;
+            text-align: center;
+            color: white;
+        }
+    }
+    &__ingredients {
+        background-color:$blue;
+    }
+    &__devices {
+        background-color:$green
+    }
+    &__ustensils {
+        background-color: $red;
+    }
+    &__close {
+        color: white;
+    }
+}
 .list {
     @include buttons-template;
 }
@@ -51,6 +81,7 @@
     &__title {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         flex-wrap: wrap;
         font-size: 18px;
         margin:25px 20px;

@@ -36,12 +36,17 @@
         </div>
     </header>
     <main>
+        <ul class="tags">
+            <li class="tags__ingredients"></li>
+            <li class="tags__devices"></li>
+            <li class="tags__ustensils"></li>
+        </ul>
         <div class="list">
             <div class="list__buttons--blue">
                 <button class="list__text">Ingrédients</button>
                 <span class="fas fa-chevron-down list__arrow--down" role="button"></span>
-                <div class="list__hidden">
-                    <div class="list__input--blue">
+                <div class="list__hidden" id="blueHidden">
+                    <div class="list__input blue">
                         <input type="text" placeholder="Rechercher un ingrédient">
                         <span class="fas fa-chevron-up list__arrow" role="button"></span>
                     </div>
@@ -53,8 +58,8 @@
             <div class="list__buttons--green">
                 <button class="list__text">Appareils</button>
                 <span class="fas fa-chevron-down list__arrow--down" role="button"></span>
-                <div class="list__hidden">
-                    <div class="list__input--green">
+                <div class="list__hidden" id="greenHidden">
+                    <div class="list__input green">
                         <input type="text" placeholder="Rechercher un ingrédient">
                         <span class="fas fa-chevron-up list__arrow" role="button"></span>
                     </div>
@@ -66,8 +71,8 @@
             <div class="list__buttons--red">
                 <button class="list__text">Ustensiles</button>
                 <span class="fas fa-chevron-down list__arrow--down" role="button"></span>
-                <div class="list__hidden">
-                    <div class="list__input--red">
+                <div class="list__hidden" id="redHidden">
+                    <div class="list__input red">
                         <input type="text" placeholder="Rechercher un ingrédient">
                         <span class="fas fa-chevron-up list__arrow" role="button"></span>
                     </div>
