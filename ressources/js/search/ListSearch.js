@@ -1,37 +1,31 @@
-
 'use strict';
-
+import Tags from "../builder/Tags.js";
+// import Buttons from "./builder/Buttons.js";
 export default class ListSearch {
     constructor() {
-        this.buttons = document.querySelector('.list').children;
+        this.ul = document.querySelector('.list__ul');
         this.inputList = document.querySelectorAll('.list__input input');
-        this.getList();
         this.inputList.forEach(input => {
             input.addEventListener('keyup', () => {
                 if (input.value.length > 2) {
-                    this.filterList(input)
+                    console.log(input)
+                    let ul =  Array.from(document.querySelectorAll('.list__ul.active'))[0];
+                    this.filterList(input, ul)
                 }
-            })
-        })
+            });
+        });
     }
-    getList() {
-        this.buttons.forEach(button => button.addEventListener('click', (e) => {
-            console.log(button)
-        }))
+    filterList(input, ul) {
+        ul.childNodes.forEach(child => {
+            if (!child.innerHTML.includes(input.value.toLowerCase())) {
+                child.className = 'hide';
+                child.style.display = 'none';
+            }
+            else {
+                child.classList.remove('hide');
+                child.style.display ='block';
+            }
+        });
     }
-    filterList(input) {
-        let result = [];
-        let ul = document.querySelectorAll('.list__ul');
-            Array.from(ul.children).forEach(child => {
-                if (child.innerHTML.includes(input.value.toLowerCase())) {
-                    result.push(child.innerHTML.toLowerCase());
-                    console.log(result)
-                }
-            })
-        this.renderList(el, result);
-    }
-    renderList(ul, result) {
-       ul.innerHTML = '';
-      result.forEach(item => ul.innerHTML = `<li>${item}</li>`)
-    }
+    
 }
