@@ -5,7 +5,7 @@ export default class Search {
     constructor(recipes) {
         this.recipes = recipes;
         this.searchInput = document.querySelector(".search__bar");
-        this.searchInput.addEventListener('keyup', this.checkIfExists.bind(this))
+        this.searchInput.addEventListener('keyup', this.checkIfInputExists.bind(this))
 
     }
     searchRender(result) {
@@ -21,25 +21,25 @@ export default class Search {
         }
     }
 
-    checkIfExists() {
+    checkIfInputExists() {
         let input = this.searchInput.value.toLowerCase();
         let result = [];
         
-        if (this.searchInput.value.length > 2) {
+        if (input.value.length > 2) {
             this.recipes.forEach(recipes => {
                 recipes.ingredients.forEach(ingredients => {
-                    if (ingredients.ingredient.includes(input)) {
+                    if (ingredients.ingredient.toLowerCase().includes(input)) {
                         if (!result.includes(recipes)) {
                             result.push(recipes)
                         }
                     }
                 });
-                if (recipes.name.includes(input)) {
+                if (recipes.name.toLowerCase().includes(input)) {
                     if (!result.includes(recipes)) {
                         result.push(recipes)
                     }
                 }
-                if (recipes.description.includes(input)) {
+                if (recipes.description.toLowerCase().includes(input)) {
                     if (!result.includes(recipes)) {
                         result.push(recipes)
                     }
@@ -47,5 +47,32 @@ export default class Search {
             });
         }
         this.searchRender(result);
+    }
+    checkIfTagExists(tag) {
+
+        let result = [];
+        if (tag.length > 0) {
+            this.recipes.forEach(recipes => {
+                recipes.ingredients.forEach(ingredients => {
+                    if (ingredients.ingredient.toLowerCase().includes(tag)) {
+                        if (!result.includes(recipes)) {
+                            result.push(recipes)
+                        }
+                    }
+                });
+                if (recipes.appliance.toLowerCase().includes(tag)) {
+                    if (!result.includes(recipes)) {
+                        result.push(recipes)
+                    }
+                }
+                recipes.ustensils.forEach(ustensils => {
+                if (ustensils.toLowerCase().includes(tag)) {
+                    if (!result.includes(recipes)) {
+                        result.push(recipes)
+                    }
+                }
+            });
+            this.searchRender(result);
+        }
     }
 }
