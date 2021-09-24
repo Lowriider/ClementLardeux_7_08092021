@@ -1,10 +1,8 @@
 'use strict';
 
 export default class ArticleTemplate {
-    constructor() {
-    }
     
-    displayRecipes(recipesArray) {
+     static displayRecipes(recipesArray) {
         recipesArray.forEach((item, index) => {
             let template = `
                         <svg class="recipes__image" width="380" height="178" viewBox="0 0 380 178" fill="none" xmlns="http://www.w3.org/2000/svg">
