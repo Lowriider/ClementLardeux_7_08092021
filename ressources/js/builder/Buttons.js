@@ -1,7 +1,8 @@
-// import ListSearch from "../search/ListSearch.js";
 'use strict';
+
 import Tags from "./Tags.js";
 import ListSearch from "../search/ListSearch.js";
+
 export default class Buttons {
     constructor(ingredientsArray, devicesArray, ustensilsArray, recipesArray) {
         this.ingredientsArray = ingredientsArray;
@@ -9,23 +10,38 @@ export default class Buttons {
         this.ustensilsArray = ustensilsArray;
         this.recipesArray = recipesArray;
         this.ingredientList = document.querySelectorAll('.list__ul');
-        this.buttons = document.querySelectorAll('.list__text')
+        this.buttons = document.querySelectorAll('.list__text');
         this.hidden = document.querySelectorAll('.list__hidden');
         this.closeButton = document.querySelectorAll('.list__arrow');
 
-        this.displayUtils(this.ingredientsArray, this.devicesArray, this.ustensilsArray);
-        this.displayList();
-        this.closeList(this.ingredientsArray, this.devicesArray, this.ustensilsArray,  this.recipesArray);
-        new ListSearch();
+        document.querySelectorAll('.list__arrow').forEach(button => button.addEventListener('click', function(e) {
+            button.offsetParent.style.display = "none";
+            e.path[3].style.width = "170px";
+            e.path[3].children[0].style.display = "block";
+            e.path[3].children[1].style.display = "block";
+            e.target.parentElement.nextElementSibling.children[0].classList.remove('active');
+            e.target.parentElement.children[0].value = '';
+            document.querySelectorAll('.list__ul').forEach(list => list.innerHTML = '')
+            Buttons.displayButtons(ingredientsArray, devicesArray, ustensilsArray);
+            Buttons.displayList();
+            console.log('CLoseListEvent')
+        }.bind(this)));
 
+        Buttons.displayButtons(ingredientsArray, devicesArray, ustensilsArray);
+        Buttons.displayList(recipesArray, ingredientsArray, ustensilsArray, devicesArray);
+        new ListSearch();
     }
-    displayUtils(ingredientsArray, devicesArray, ustensilsArray) {
-        this.ingredientList.forEach((list, index) => {
+    static closeButton = document.querySelectorAll('.list__arrow');
+
+    static displayButtons(ingredientsArray, devicesArray, ustensilsArray) {
+       console.log('displayButton')
+        document.querySelectorAll('.list__ul').forEach((list, index) => {
             if (index === 0) {
                 ingredientsArray.forEach(ingredients => {
                     let newLi = document.createElement('li');
                     list.appendChild(newLi)
                     newLi.innerHTML = ingredients;
+                    console.log(newLi)
                 });
             } else if (index === 1) {
                 devicesArray.forEach(devices => {
@@ -40,41 +56,43 @@ export default class Buttons {
                     newLi.innerHTML = ustensils;
                 });
             } else {}
-        })
+        });
+        console.log('fini?')
     }
-    displayList() {
-        this.buttons.forEach(button => button.addEventListener('click', function(e) {
+
+    static displayList() {
+        document.querySelectorAll('.list__text').forEach(button => button.addEventListener('click', function (e) {
+            console.log('openList')
             if (button.parentElement.className === "list__buttons--blue") {
                 button.parentElement.style.width = '45rem';
                 button.style.display = "none";
                 button.parentElement.children[1].style.display = "none";
                 button.parentElement.children[2].style.display = 'block';
                 e.target.parentElement.lastElementChild.children[1].children[0].classList.add('active');
-                
-            } else  {
+
+            } else {
                 button.parentElement.style.width = '15rem';
                 button.style.display = "none";
                 button.parentElement.children[1].style.display = "none";
                 button.parentElement.children[2].style.display = 'block';
                 e.target.parentElement.lastElementChild.children[1].children[0].classList.add('active');
-               
             }
         }));
-        
+
     }
-    closeList() {
-        this.closeButton.forEach(button => button.addEventListener('click', function(e) {
-            button.offsetParent.style.display = "none";
-            e.path[3].style.width = "170px";
-            e.path[3].children[0].style.display = "block";
-            e.path[3].children[1].style.display = "block";
-            e.target.parentElement.nextElementSibling.children[0].classList.remove('active');
-            e.target.parentElement.children[0].value = '';
-            e.target.parentElement.parentElement.children[1].children[0].innerHTML = '';
-            this.displayUtils(this.ingredientsArray, this.devicesArray, this.ustensilsArray);
-            this.displayList();
-            new Tags(this.recipesArray);
-        }.bind(this)));
+    static closeList(recipesArray, ingredientsArray, ustensilsArray, devicesArray) {
+        document.querySelectorAll('.list__hidden').forEach(hidden => hidden.style.display = 'none')
+        Array.from(document.querySelectorAll('.list')[0].children).forEach(buttons => buttons.style.width = '170px');
+        document.querySelectorAll('.list__arrow--down').forEach(arrow => arrow.style.display = 'block');
+        document.querySelectorAll('.list__text').forEach(input => input.style.display = 'block');
+        document.querySelectorAll('.list__ul').forEach(list => list.innerHTML = '');
+        document.querySelectorAll('.list__input input').forEach(input => {
+            console.log(input.value)
+            input.value = '';
+            console.log(input.value)
+        })
+        console.log("CloseList")
+        new Tags(recipesArray, ingredientsArray, ustensilsArray, devicesArray);
     }
 
 }

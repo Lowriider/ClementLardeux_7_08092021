@@ -1,16 +1,13 @@
 'use strict';
-import Tags from "../builder/Tags.js";
-// import Buttons from "./builder/Buttons.js";
+
 export default class ListSearch {
     constructor() {
-        this.ul = document.querySelector('.list__ul');
         this.inputList = document.querySelectorAll('.list__input input');
         this.inputList.forEach(input => {
             input.addEventListener('keyup', () => {
                 if (input.value.length > 2) {
-                    console.log(input)
                     let ul =  Array.from(document.querySelectorAll('.list__ul.active'))[0];
-                    this.filterList(input, ul)
+                    this.filterList(input, ul);
                 }
             });
         });
@@ -26,6 +23,9 @@ export default class ListSearch {
                 child.style.display ='block';
             }
         });
+        // console.log(ul)
+        // ul.style.height = '100px';
+        // document.querySelectorAll('.list__hidden').style.top = '50rem';
     }
     
 }
