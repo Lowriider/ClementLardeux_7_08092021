@@ -23,9 +23,6 @@ export default class ListSearch {
                 child.style.display ='block';
             }
         });
-        // console.log(ul)
-        // ul.style.height = '100px';
-        // document.querySelectorAll('.list__hidden').style.top = '50rem';
     }
     
 }

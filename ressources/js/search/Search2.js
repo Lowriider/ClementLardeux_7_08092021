@@ -1,19 +1,23 @@
 'use strict';
 import ArticleTemplate from "../builder/Articles.js";
+import Buttons from "../builder/Buttons.js";
+import Tags from "../builder/Tags.js";
 
 export default class Search {
     constructor(recipes) {
         this.recipes = recipes;
         this.searchInput = document.querySelector(".search__bar");
         this.searchInput.addEventListener('keyup', this.checkIfInputExists.bind(this))
-
     }
-    searchRender(result) {
+    searchRender(result, ingredientsArray, ustensilsArray, devicesArray) {
         if (result.length > 0) {
             document.querySelector('.search-result').style.display = 'flex';
             document.querySelector('.search-result__text').innerText = `${result.length} recette(s) correspond(ent) à votre recherche`;
             document.querySelector('.recipes').innerHTML = "";
-            new ArticleTemplate().displayRecipes(result);
+            ArticleTemplate.displayRecipes(result);
+            Buttons.closeList(ingredientsArray, ustensilsArray, devicesArray);
+            Buttons.displayButtons(ingredientsArray, ustensilsArray, devicesArray);
+            new Tags(this.recipes)
         } else {
             document.querySelector('.search-result').style.display = 'flex';
             document.querySelector('.search-result').style.backgroundColor = 'rgb(255, 233, 165)';
@@ -24,55 +28,85 @@ export default class Search {
     checkIfInputExists() {
         let input = this.searchInput.value.toLowerCase();
         let result = [];
-        
-        if (input.value.length > 2) {
-            this.recipes.forEach(recipes => {
-                recipes.ingredients.forEach(ingredients => {
-                    if (ingredients.ingredient.toLowerCase().includes(input)) {
-                        if (!result.includes(recipes)) {
-                            result.push(recipes)
+
+        if (input.length > 2) {
+            for (let i = 0; i < this.recipes.length; i++) {
+                for (let j = 0; j < this.recipes[i].ingredients.length; j++) {
+
+                    if (this.recipes[i].ingredients[j].ingredient.toLowerCase().includes(input)) {
+                        if (!result.includes(this.recipes[i])) {
+                            result.push(this.recipes[i]);
                         }
                     }
-                });
-                if (recipes.name.toLowerCase().includes(input)) {
-                    if (!result.includes(recipes)) {
-                        result.push(recipes)
+                }
+                if (this.recipes[i].name.toLowerCase().includes(input)) {
+                    if (!result.includes(this.recipes[i])) {
+                        result.push(this.recipes[i]);
                     }
                 }
-                if (recipes.description.toLowerCase().includes(input)) {
-                    if (!result.includes(recipes)) {
-                        result.push(recipes)
+                if (this.recipes[i].description.toLowerCase().includes(input)) {
+                    if (!result.includes(this.recipes[i])) {
+                        result.push(this.recipes[i]);
                     }
                 }
-            });
+            }
+            console.log(result)
+            this.newArray(result);
         }
-        this.searchRender(result);
+        if(input.length === 0 ) {
+            document.querySelector('.recipes').innerHTML = "";
+            ArticleTemplate.displayRecipes(recipes);
+        }
     }
     checkIfTagExists(tag) {
 
         let result = [];
         if (tag.length > 0) {
-            this.recipes.forEach(recipes => {
-                recipes.ingredients.forEach(ingredients => {
-                    if (ingredients.ingredient.toLowerCase().includes(tag)) {
-                        if (!result.includes(recipes)) {
-                            result.push(recipes)
+            for (let i = 0; i < this.recipes.length; i++) {
+                for (let j = 0; j < this.recipes[i].ingredients.length; j++) {
+                    if (this.recipes[i].ingredients[j].ingredient.toLowerCase().includes(tag)) {
+                        if (!result.includes(this.recipes[i])) {
+                            result.push(this.recipes[i])
                         }
                     }
-                });
-                if (recipes.appliance.toLowerCase().includes(tag)) {
-                    if (!result.includes(recipes)) {
-                        result.push(recipes)
+                }
+                if (this.recipes[i].appliance.toLowerCase().includes(tag)) {
+                    if (!result.includes(this.recipes[i])) {
+                        result.push(this.recipes[i])
                     }
                 }
-                recipes.ustensils.forEach(ustensils => {
-                if (ustensils.toLowerCase().includes(tag)) {
-                    if (!result.includes(recipes)) {
-                        result.push(recipes)
+                for (let h = 0; h < this.recipes[i].ustensils.length; h++) {
+                    if (this.recipes[i].ustensils.toLowerCase().includes(tag)) {
+                        if (!result.includes(this.recipes[i])) {
+                            result.push(this.recipes[i])
+                        }
                     }
                 }
-            });
-            this.searchRender(result);
+                this.newArray(result);
+            }
         }
     }
+    newArray(result) {
+       let newIngredientsArray = [];
+       let newUstensilsArray = [];
+       let newDevicesArray = [];
+
+       result.forEach(item => {
+           item.ingredients.forEach(ingredients => {
+               if (!newIngredientsArray.includes(ingredients.ingredient.toLowerCase())) {
+                    newIngredientsArray.push(ingredients.ingredient.toLowerCase());
+               }
+           });
+           item.ustensils.forEach(ustensils => {
+               if (!newUstensilsArray.includes(ustensils.toLowerCase())) {
+                   newUstensilsArray.push(ustensils.toLowerCase());
+               }
+           })
+           if (!newDevicesArray.includes(item.appliance.toLowerCase())) {
+               newDevicesArray.push(item.appliance.toLowerCase());
+           }
+       });
+       this.searchRender(result, newIngredientsArray, newUstensilsArray, newDevicesArray); 
+   }
+
 }

@@ -15,7 +15,7 @@ export default class ArticleTemplate {
                         <span class="recipes__duration">${item.time} min</span>
                         </div>
                         <div class='recipes__infos'>
-                        <div class="recipes__ingredients">${item.name}</div>
+                        <div class="recipes__ingredients"></div>
                         <div class="recipes__instructions">
                         <span>${item.description}</span>
                         </div>
@@ -27,8 +27,15 @@ export default class ArticleTemplate {
             recipesArticle.innerHTML = template;
             let divIngredients = Array.from(document.querySelectorAll('.recipes__ingredients'));
             item.ingredients.forEach(ingredients => {
-                let newEl = `<p>${ingredients.ingredient} :${ingredients.quantity} ${ingredients.unit} </p>`
-                divIngredients[index].innerHTML += newEl;
+                console.log(ingredients.quantity)
+                if(ingredients.quantity || ingredients.unit === undefined) {
+                    let newEl = `<p>${ingredients.ingredient}</p>`
+                    divIngredients[index].innerHTML += newEl;
+                }
+                else {
+                    let newEl = `<p>${ingredients.ingredient} :${ingredients.quantity} ${ingredients.unit} </p>`
+                    divIngredients[index].innerHTML += newEl;
+                }
             });
         });
     }

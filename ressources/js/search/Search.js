@@ -4,11 +4,7 @@ import Buttons from "../builder/Buttons.js";
 import Tags from "../builder/Tags.js";
 
 export default class Search {
-    constructor(recipes, ingredientsArray, devicesArray, ustensilsArray) {
-        this.ingredientsArray =ingredientsArray;
-        this.devicesArray =devicesArray;
-        this.ustensilsArray = ustensilsArray;
-
+    constructor(recipes) {
         this.recipes = recipes;
         this.searchInput = document.querySelector(".search__bar");
         this.searchInput.addEventListener('keyup', this.checkIfInputExists.bind(this))
@@ -19,7 +15,6 @@ export default class Search {
             document.querySelector('.search-result').style.display = 'flex';
             document.querySelector('.search-result__text').innerText = `${result.length} recette(s) correspond(ent) à votre recherche`;
             document.querySelector('.recipes').innerHTML = "";
-             console.log('renderRecipe+List')
             ArticleTemplate.displayRecipes(result);
             Buttons.closeList(ingredientsArray, ustensilsArray, devicesArray);
             Buttons.displayButtons(ingredientsArray, ustensilsArray, devicesArray);
