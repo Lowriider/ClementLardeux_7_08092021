@@ -10,10 +10,12 @@
 .search {
     @include bar-template;
 }
+
 .tags {
     display: none;
     margin-bottom: 20px;
     width: 400px;
+
     li {
         border-radius: 5px;
         justify-content: space-evenly;
@@ -22,28 +24,35 @@
         height: 40px;
         width: 120px;
         margin-right: 20px;
+
         p {
             height: 20px;
             text-align: center;
             color: white;
         }
     }
+
     &__ingredients {
-        background-color:$blue;
+        background-color: $blue;
     }
+
     &__devices {
-        background-color:$green
+        background-color: $green
     }
+
     &__ustensils {
         background-color: $red;
     }
+
     &__close {
         color: white;
     }
 }
+
 .list {
     @include buttons-template;
 }
+
 .search-result {
     display: flex;
     display: none;
@@ -61,7 +70,8 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-bottom:20px;
+    margin-bottom: 20px;
+
     &__article {
         background-color: #E7E7E7;
         border-radius: .3125rem;
@@ -70,33 +80,51 @@
         position: relative;
         width: 380px;
     }
+
     &__image {
         width: 380px;
         height: 178px;
     }
-    &__text {
 
+    &__name {
+        font-size: 18px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 220px;
     }
-   
+
+    &__text {}
+
     &__title {
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
         font-size: 18px;
-        margin:25px 20px;
+        margin: 25px 20px;
     }
+
     &__infos {
         display: flex;
         justify-content: space-between;
-        margin:25px 20px;
+        margin: 25px 20px;
         text-overflow: ellipsis;
         overflow: hidden;
     }
-    &__ingredients, &__instructions {
+
+    &__ingredients,
+    &__instructions {
         font-size: 12px;
         width: 171px;
         height: 109px;
-        
+
+    }
+
+    &__instructions span {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 7;
+        -webkit-box-orient: vertical;
     }
 }

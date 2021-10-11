@@ -282,6 +282,13 @@ a {
   width: 380px;
   height: 178px;
 }
+.recipes__name {
+  font-size: 18px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 220px;
+}
 .recipes__title {
   display: flex;
   justify-content: space-between;
@@ -301,6 +308,12 @@ a {
   font-size: 12px;
   width: 171px;
   height: 109px;
+}
+.recipes__instructions span {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
 }
 
 /*# sourceMappingURL=style.css.map */
