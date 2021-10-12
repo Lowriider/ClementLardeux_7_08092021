@@ -24,6 +24,7 @@ export default class Buttons {
             document.querySelectorAll('.list__ul').forEach(list => list.innerHTML = '')
             Buttons.displayButtons(ingredientsArray, devicesArray, ustensilsArray);
             Buttons.displayList();
+            new Tags(recipesArray, ingredientsArray, devicesArray, ustensilsArray);
             console.log('CLoseListEvent')
         }.bind(this)));
 
@@ -34,14 +35,12 @@ export default class Buttons {
     static closeButton = document.querySelectorAll('.list__arrow');
 
     static displayButtons(ingredientsArray, devicesArray, ustensilsArray) {
-       console.log('displayButton')
         document.querySelectorAll('.list__ul').forEach((list, index) => {
             if (index === 0) {
                 ingredientsArray.forEach(ingredients => {
                     let newLi = document.createElement('li');
                     list.appendChild(newLi)
                     newLi.innerHTML = ingredients;
-                    console.log(newLi)
                 });
             } else if (index === 1) {
                 devicesArray.forEach(devices => {
@@ -57,12 +56,10 @@ export default class Buttons {
                 });
             } else {}
         });
-        console.log('fini?')
     }
 
     static displayList() {
         document.querySelectorAll('.list__text').forEach(button => button.addEventListener('click', function (e) {
-            console.log('openList')
             if (button.parentElement.className === "list__buttons--blue") {
                 button.parentElement.style.width = '45rem';
                 button.style.display = "none";
@@ -86,13 +83,11 @@ export default class Buttons {
         document.querySelectorAll('.list__arrow--down').forEach(arrow => arrow.style.display = 'block');
         document.querySelectorAll('.list__text').forEach(input => input.style.display = 'block');
         document.querySelectorAll('.list__ul').forEach(list => list.innerHTML = '');
+        document.querySelectorAll('.list__ul').forEach(list => list.classList.remove('active'));
         document.querySelectorAll('.list__input input').forEach(input => {
-            console.log(input.value)
             input.value = '';
-            console.log(input.value)
         })
-        console.log("CloseList")
-        new Tags(recipesArray, ingredientsArray, ustensilsArray, devicesArray);
+        new Tags(recipesArray, ingredientsArray, devicesArray, ustensilsArray);
     }
 
 }
