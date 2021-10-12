@@ -5,7 +5,7 @@ import Tags from "../builder/Tags.js";
 
 export default class Search {
     constructor(recipes, ingredientsArray, devicesArray, ustensilsArray) {
-        this.ingredientsArray =ingredientsArray;
+        this.ingredientsArray = ingredientsArray;
         this.devicesArray =devicesArray;
         this.ustensilsArray = ustensilsArray;
         this.recipes = recipes;
@@ -13,15 +13,15 @@ export default class Search {
         this.searchInput.addEventListener('keyup', this.checkIfInputExists.bind(this))
     }
 
-   searchRender(result, ingredientsArray, ustensilsArray, devicesArray) {
+   searchRender(result, newIngredientsArray, newUstensilsArray, newDevicesArray) {
         if (result.length > 0) {
             document.querySelector('.search-result').style.display = 'flex';
             document.querySelector('.search-result__text').innerText = `${result.length} recette(s) correspond(ent) à votre recherche`;
             document.querySelector('.recipes').innerHTML = "";
             ArticleTemplate.displayRecipes(result);
-            Buttons.closeList(ingredientsArray, ustensilsArray, devicesArray);
-            Buttons.displayButtons(ingredientsArray, ustensilsArray, devicesArray);
-            new Tags(this.recipes);
+            Buttons.closeList(result ,newIngredientsArray, newUstensilsArray, newDevicesArray);
+            Buttons.displayButtons(newIngredientsArray, newUstensilsArray, newDevicesArray);
+            new Tags(this.recipes, this.ingredientsArray, this.devicesArray, this.ustensilsArray);
             console.timeEnd('test');
         } else {
             document.querySelector('.search-result').style.display = 'flex';
