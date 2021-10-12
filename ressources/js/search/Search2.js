@@ -17,7 +17,8 @@ export default class Search {
             ArticleTemplate.displayRecipes(result);
             Buttons.closeList(ingredientsArray, ustensilsArray, devicesArray);
             Buttons.displayButtons(ingredientsArray, ustensilsArray, devicesArray);
-            new Tags(this.recipes)
+            new Tags(this.recipes);
+            console.timeEnd('test');
         } else {
             document.querySelector('.search-result').style.display = 'flex';
             document.querySelector('.search-result').style.backgroundColor = 'rgb(255, 233, 165)';
@@ -30,6 +31,7 @@ export default class Search {
         let result = [];
 
         if (input.length > 2) {
+            console.time('test');
             for (let i = 0; i < this.recipes.length; i++) {
                 for (let j = 0; j < this.recipes[i].ingredients.length; j++) {
 
@@ -50,7 +52,6 @@ export default class Search {
                     }
                 }
             }
-            console.log(result)
             this.newArray(result);
         }
         if(input.length === 0 ) {
@@ -62,6 +63,7 @@ export default class Search {
 
         let result = [];
         if (tag.length > 0) {
+            console.time('test');
             for (let i = 0; i < this.recipes.length; i++) {
                 for (let j = 0; j < this.recipes[i].ingredients.length; j++) {
                     if (this.recipes[i].ingredients[j].ingredient.toLowerCase().includes(tag)) {
