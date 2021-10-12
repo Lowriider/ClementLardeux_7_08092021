@@ -21,9 +21,10 @@ export default class Buttons {
             e.path[3].children[1].style.display = "block";
             e.target.parentElement.nextElementSibling.children[0].classList.remove('active');
             e.target.parentElement.children[0].value = '';
-            document.querySelectorAll('.list__ul').forEach(list => list.innerHTML = '');
+            document.querySelectorAll('.list__ul').forEach(list => list.innerHTML = '')
             Buttons.displayButtons(ingredientsArray, devicesArray, ustensilsArray);
             Buttons.displayList();
+            new Tags(recipesArray, ingredientsArray, devicesArray, ustensilsArray);
         }.bind(this)));
 
         Buttons.displayButtons(ingredientsArray, devicesArray, ustensilsArray);
@@ -64,6 +65,7 @@ export default class Buttons {
                 button.parentElement.children[1].style.display = "none";
                 button.parentElement.children[2].style.display = 'block';
                 e.target.parentElement.lastElementChild.children[1].children[0].classList.add('active');
+
             } else {
                 button.parentElement.style.width = '15rem';
                 button.style.display = "none";
@@ -80,9 +82,11 @@ export default class Buttons {
         document.querySelectorAll('.list__arrow--down').forEach(arrow => arrow.style.display = 'block');
         document.querySelectorAll('.list__text').forEach(input => input.style.display = 'block');
         document.querySelectorAll('.list__ul').forEach(list => list.innerHTML = '');
+        document.querySelectorAll('.list__ul').forEach(list => list.classList.remove('active'));
         document.querySelectorAll('.list__input input').forEach(input => {
             input.value = '';
         })
-        new Tags(recipesArray, ingredientsArray, ustensilsArray, devicesArray);
+        new Tags(recipesArray, ingredientsArray, devicesArray, ustensilsArray);
     }
+
 }

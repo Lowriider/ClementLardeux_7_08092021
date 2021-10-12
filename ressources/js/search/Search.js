@@ -4,21 +4,25 @@ import Buttons from "../builder/Buttons.js";
 import Tags from "../builder/Tags.js";
 
 export default class Search {
-    constructor(recipes) {
+    constructor(recipes, ingredientsArray, devicesArray, ustensilsArray) {
+        this.ingredientsArray = ingredientsArray;
+        this.devicesArray =devicesArray;
+        this.ustensilsArray = ustensilsArray;
         this.recipes = recipes;
         this.searchInput = document.querySelector(".search__bar");
         this.searchInput.addEventListener('keyup', this.checkIfInputExists.bind(this))
     }
 
-   searchRender(result, ingredientsArray, ustensilsArray, devicesArray) {
+   searchRender(result, newIngredientsArray, newUstensilsArray, newDevicesArray) {
         if (result.length > 0) {
             document.querySelector('.search-result').style.display = 'flex';
             document.querySelector('.search-result__text').innerText = `${result.length} recette(s) correspond(ent) à votre recherche`;
             document.querySelector('.recipes').innerHTML = "";
             ArticleTemplate.displayRecipes(result);
-            Buttons.closeList(ingredientsArray, ustensilsArray, devicesArray);
-            Buttons.displayButtons(ingredientsArray, ustensilsArray, devicesArray);
-            new Tags(this.recipes)
+            Buttons.closeList(result ,newIngredientsArray, newUstensilsArray, newDevicesArray);
+            Buttons.displayButtons(newIngredientsArray, newUstensilsArray, newDevicesArray);
+            new Tags(this.recipes, this.ingredientsArray, this.devicesArray, this.ustensilsArray);
+            console.timeEnd('test');
         } else {
             document.querySelector('.search-result').style.display = 'flex';
             document.querySelector('.search-result').style.backgroundColor = 'rgb(255, 233, 165)';
@@ -29,8 +33,9 @@ export default class Search {
     checkIfInputExists() {
         let input = this.searchInput.value.toLowerCase();
         let result = [];
-
+        
         if (input.length > 2) {
+            console.time('test');
             this.recipes.forEach(recipes => {
                 recipes.ingredients.filter(function (y) {
                     if (y.ingredient.toLowerCase().includes(input)) {
@@ -66,6 +71,7 @@ export default class Search {
         let result = [];
 
         if (tag.length > 0) {
+            console.time('test');
             this.recipes.forEach(recipes => {
                 recipes.ingredients.filter(function (y) {
                     if (y.ingredient.toLowerCase().includes(tag)) {
@@ -87,13 +93,11 @@ export default class Search {
                     }
                 }
             });
-             console.log('ChecktagExist')
             this.newArray(result);
         }
     }
 
     newArray(result) {
-         console.log('SendNewarray')
         let newIngredientsArray = [];
         let newUstensilsArray = [];
         let newDevicesArray = [];

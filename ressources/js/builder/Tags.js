@@ -17,19 +17,19 @@ export default class Tags {
                 this.tags[0].style.display = 'flex';
                 this.tags[0].innerHTML = `<p>${list.innerHTML}</p><i class="far fa-times-circle tags__close"></i>`;
                 this.activeTag = this.tags[0].childNodes[0].innerHTML;
-                new Search(recipes).checkIfTagExists(this.activeTag, recipesArray);
+                new Search(recipes, ingredientsArray, devicesArray, ustensilsArray).checkIfTagExists(this.activeTag, recipesArray);
             } 
             else if (list.offsetParent.lastElementChild.className === "list__list--devices") {
                 this.tags[1].style.display = 'flex';
                 this.tags[1].innerHTML = `<p>${list.innerHTML}</p><i class="far fa-times-circle tags__close"></i>`;
                 this.activeTag = this.tags[1].childNodes[0].innerHTML;
-                new Search(recipes).checkIfTagExists(this.activeTag, recipesArray);
+                new Search(recipes, ingredientsArray, devicesArray, ustensilsArray).checkIfTagExists(this.activeTag, recipesArray);
             }
             else if (list.offsetParent.lastElementChild.className === "list__list--ustensils") {
                 this.tags[2].style.display = 'flex';
                 this.tags[2].innerHTML = `<p>${list.innerHTML}</p><i class="far fa-times-circle tags__close"></i>`;
                 this.activeTag = this.tags[2].childNodes[0].innerHTML;
-                new Search(recipes).checkIfTagExists(this.activeTag, recipesArray);
+                new Search(recipes, ingredientsArray, devicesArray, ustensilsArray).checkIfTagExists(this.activeTag, recipesArray);
             }
             else {}
 
@@ -38,13 +38,13 @@ export default class Tags {
             //                  CLOSE TAG EVENT              //
 
             closeButton.forEach(button => button.addEventListener('click', () => {
-                console.log('closebuttonTag')
                 button.parentElement.style.display = 'none';
                 document.querySelector('.search-result').style.display = 'none';
                 document.querySelector('.recipes').innerHTML = "";
                 ArticleTemplate.displayRecipes(recipesArray);
+                document.querySelectorAll('.list__ul').forEach(list => list.innerHTML = "")
                 Buttons.displayButtons(ingredientsArray, ustensilsArray, devicesArray);
-                new Tags(recipesArray, ingredientsArray, devicesArray, ustensilsArray)
+                new Tags(recipesArray, ingredientsArray, devicesArray, ustensilsArray);
             }));
         }));
     }
