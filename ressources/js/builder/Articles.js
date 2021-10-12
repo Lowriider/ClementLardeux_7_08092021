@@ -27,9 +27,12 @@ export default class ArticleTemplate {
             recipesArticle.innerHTML = template;
             let divIngredients = Array.from(document.querySelectorAll('.recipes__ingredients'));
             item.ingredients.forEach(ingredients => {
-                console.log(ingredients.quantity)
-                if(ingredients.quantity || ingredients.unit === undefined) {
+                if(ingredients.quantity === undefined) {
                     let newEl = `<p>${ingredients.ingredient}</p>`
+                    divIngredients[index].innerHTML += newEl;
+                }
+                else if(ingredients.unit === undefined) {
+                    let newEl = `<p>${ingredients.ingredient} :${ingredients.quantity}</p>`;
                     divIngredients[index].innerHTML += newEl;
                 }
                 else {
