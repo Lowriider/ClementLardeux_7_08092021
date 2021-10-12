@@ -4,7 +4,7 @@ import Buttons from "../builder/Buttons.js";
 import Tags from "../builder/Tags.js";
 
 export default class Search {
-    constructor(recipes) {
+    constructor(recipes, ingredientsArray, devicesArray, ustensilsArray) {
         this.ingredientsArray = ingredientsArray;
         this.devicesArray =devicesArray;
         this.ustensilsArray = ustensilsArray;
