@@ -1,5 +1,5 @@
 'use strict';
-import Search from "../search/search.js";
+import Search from "../search/Search.js";
 import ArticleTemplate from "./Articles.js";
 import Buttons from "./Buttons.js";
 
@@ -18,7 +18,6 @@ export default class Tags {
                 this.tags[0].style.display = 'flex';
                 this.tags[0].innerHTML = `<p>${list.innerHTML}</p><i class="far fa-times-circle tags__close"></i>`;
                 this.activeTag = this.tags[0].childNodes[0].innerHTML;
-                console.log("SelectTag")
                 new Search(recipes).checkIfTagExists(this.activeTag, recipesArray);
                 // Buttons.closeList();
 
@@ -30,7 +29,6 @@ export default class Tags {
                 this.tags[1].innerHTML = `<p>${list.innerHTML}</p><i class="far fa-times-circle tags__close"></i>`;
                 this.activeTag = this.tags[1].childNodes[0].innerHTML;
                 new Search(recipes).checkIfTagExists(this.activeTag, recipesArray);
-                console.log("SelectTag")
                 // CALL STATIC FUNCTION CLOSE ALL BUTTONS AFTER ITEM SELECTED // 
                 
                 // Buttons.closeList();
@@ -40,7 +38,6 @@ export default class Tags {
                 this.tags[2].innerHTML = `<p>${list.innerHTML}</p><i class="far fa-times-circle tags__close"></i>`;
                 this.activeTag = this.tags[2].childNodes[0].innerHTML;
                 new Search(recipes).checkIfTagExists(this.activeTag, recipesArray);
-                console.log("SelectTag")
                 // CALL STATIC FUNCTION CLOSE ALL BUTTONS AFTER ITEM SELECTED // 
                 
                 // Buttons.closeList();
@@ -52,7 +49,6 @@ export default class Tags {
             //                  CLOSE TAG EVENT              //
 
             closeButton.forEach(button => button.addEventListener('click', () => {
-                console.log('closebuttonTag')
                 button.parentElement.style.display = 'none';
                 document.querySelector('.search-result').style.display = 'none';
                 document.querySelector('.recipes').innerHTML = "";
