@@ -68,22 +68,34 @@
 
 .recipes {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
     margin-bottom: 20px;
+    justify-content: center;
+    @include breakpoint(tablet) {
+        justify-content: space-between;
+    }
 
     &__article {
         background-color: #E7E7E7;
         border-radius: .3125rem;
-        height: 364px;
+        height: 294px;
         margin-bottom: 2.5rem;
         position: relative;
-        width: 380px;
+        width: 320px;
+        @include breakpoint(mobileL){
+            width: 380px;
+            height: 384px;
+        }
     }
 
     &__image {
-        width: 380px;
-        height: 178px;
+        background-color:  #C7BEBE;
+        width: 320px;
+        height: 118px;
+        @include breakpoint(mobileL){
+            width: 380px;
+            height: 178px;
+        }
     }
 
     &__name {

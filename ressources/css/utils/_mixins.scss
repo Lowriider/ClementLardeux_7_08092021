@@ -7,8 +7,17 @@
     }
 
     body {
-        margin: auto 85px;
+        margin: 85px;
         max-width: 1440px;
+        @include breakpoint(mobileS) {
+            margin: 20px;
+        }
+        @include breakpoint(tablet) {
+            margin: 50px;
+        }
+        @include breakpoint(wide) {
+            margin: auto;
+        }
     }
 
     a {
@@ -74,7 +83,10 @@ input[type="text"] {
 @mixin buttons-template {
     margin-bottom: 20px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    @include breakpoint(tablet) {
+        flex-direction: row;
+    }
 
     &__list {
         display: none;
@@ -118,8 +130,15 @@ input[type="text"] {
         display: flex;
         justify-content: space-around;
         align-items: center;
-        margin-left: 32px;
-        margin-right: 32px;
+        margin-top: 32px;
+        margin-bottom: 32px;
+        
+        @include breakpoint(tablet) {
+            margin-bottom: 0px;
+            margin-top: 0px;
+            margin-left: 32px;
+            margin-right: 32px;
+        }
     }
 
     &__buttons--red {

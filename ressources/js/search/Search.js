@@ -36,6 +36,7 @@ export default class Search {
         
         if (input.length > 2) {
             console.time('test');
+            
             this.recipes.forEach(recipes => {
                 recipes.ingredients.filter(function (y) {
                     if (y.ingredient.toLowerCase().includes(input)) {

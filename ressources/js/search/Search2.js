@@ -37,7 +37,6 @@ export default class Search {
             console.time('test');
             for (let i = 0; i < this.recipes.length; i++) {
                 for (let j = 0; j < this.recipes[i].ingredients.length; j++) {
-
                     if (this.recipes[i].ingredients[j].ingredient.toLowerCase().includes(input)) {
                         if (!result.includes(this.recipes[i])) {
                             result.push(this.recipes[i]);
