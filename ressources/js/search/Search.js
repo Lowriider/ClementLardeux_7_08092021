@@ -6,23 +6,22 @@ import Tags from "../builder/Tags.js";
 export default class Search {
     constructor(recipes, ingredientsArray, devicesArray, ustensilsArray) {
         this.ingredientsArray = ingredientsArray;
-        this.devicesArray =devicesArray;
+        this.devicesArray = devicesArray;
         this.ustensilsArray = ustensilsArray;
         this.recipes = recipes;
         this.searchInput = document.querySelector(".search__bar");
         this.searchInput.addEventListener('keyup', this.checkIfInputExists.bind(this))
     }
 
-   searchRender(result, newIngredientsArray, newUstensilsArray, newDevicesArray) {
+    searchRender(result, newIngredientsArray, newUstensilsArray, newDevicesArray) {
         if (result.length > 0) {
             document.querySelector('.search-result').style.display = 'flex';
             document.querySelector('.search-result__text').innerText = `${result.length} recette(s) correspond(ent) à votre recherche`;
             document.querySelector('.recipes').innerHTML = "";
             ArticleTemplate.displayRecipes(result);
-            Buttons.closeList(result ,newIngredientsArray, newUstensilsArray, newDevicesArray);
+            Buttons.closeList(result, newIngredientsArray, newUstensilsArray, newDevicesArray);
             Buttons.displayButtons(newIngredientsArray, newUstensilsArray, newDevicesArray);
             new Tags(this.recipes, this.ingredientsArray, this.devicesArray, this.ustensilsArray);
-            console.timeEnd('test');
         } else {
             document.querySelector('.search-result').style.display = 'flex';
             document.querySelector('.search-result').style.backgroundColor = 'rgb(255, 233, 165)';
@@ -33,41 +32,35 @@ export default class Search {
     checkIfInputExists() {
         let input = this.searchInput.value.toLowerCase();
         let result = [];
-        
+
         if (input.length > 2) {
-            console.time('test');
-            
-            this.recipes.forEach(recipes => {
+            recipes.filter(recipes => {
                 recipes.ingredients.filter(function (y) {
                     if (y.ingredient.toLowerCase().includes(input)) {
                         if (!result.includes(recipes)) {
-                            result.push(recipes)
+                            result.push(recipes);
                         }
                     }
-                })
-            });
-            recipes.filter(function (y) {
-                if (y.name.toLowerCase().includes(input)) {
-                    if (!result.includes(y)) {
-                        result.push(y)
+                });
+                if (recipes.name.toLowerCase().includes(input)) {
+                    if (!result.includes(recipes)) {
+                        result.push(recipes);
                     }
                 }
-
-            });
-            recipes.filter(function (y) {
-                if (y.description.toLowerCase().includes(input)) {
-                    if (!result.includes(y)) {
-                        result.push(y)
+                if (recipes.description.toLowerCase().includes(input)) {
+                    if (!result.includes(recipes)) {
+                        result.push(recipes);
                     }
                 }
             });
-            this.newArray(result);   
+            this.newArray(result);
         }
-        if(input.length === 0 ) {
+        if (input.length === 0) {
             document.querySelector('.recipes').innerHTML = "";
             ArticleTemplate.displayRecipes(recipes);
         }
     }
+
     checkIfTagExists(tag) {
         let result = [];
 
@@ -106,7 +99,7 @@ export default class Search {
         result.forEach(item => {
             item.ingredients.forEach(ingredients => {
                 if (!newIngredientsArray.includes(ingredients.ingredient.toLowerCase())) {
-                     newIngredientsArray.push(ingredients.ingredient.toLowerCase());
+                    newIngredientsArray.push(ingredients.ingredient.toLowerCase());
                 }
             });
             item.ustensils.forEach(ustensils => {
@@ -118,6 +111,6 @@ export default class Search {
                 newDevicesArray.push(item.appliance.toLowerCase());
             }
         });
-        this.searchRender(result, newIngredientsArray, newUstensilsArray, newDevicesArray); 
+        this.searchRender(result, newIngredientsArray, newUstensilsArray, newDevicesArray);
     }
 }
