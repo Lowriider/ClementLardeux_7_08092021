@@ -80,7 +80,7 @@ export default class Search {
                             result.push(recipes)
                         }
                     }
-                })
+                });
                 if (recipes.appliance.toLowerCase().includes(tag)) {
                     if (!result.includes(recipes)) {
                         result.push(recipes)
@@ -106,7 +106,7 @@ export default class Search {
                 if (!newUstensilsArray.includes(ustensils.toLowerCase())) {
                     newUstensilsArray.push(ustensils.toLowerCase());
                 }
-            })
+            });
             if (!newDevicesArray.includes(item.appliance.toLowerCase())) {
                 newDevicesArray.push(item.appliance.toLowerCase());
             }

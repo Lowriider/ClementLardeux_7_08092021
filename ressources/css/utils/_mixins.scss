@@ -1,3 +1,5 @@
+@import 'responsive';
+
 @mixin general-style-home {
     * {
         margin: 0;
@@ -7,25 +9,27 @@
     }
 
     body {
-        margin: 85px;
-        max-width: 1440px;
-        @include breakpoint(mobileS) {
-            margin: 20px;
-        }
-        @include breakpoint(tablet) {
-            margin: 50px;
-        }
-        @include breakpoint(wide) {
-            margin: auto;
+        margin: 0;
+    }
+
+    .page-container {
+        margin: auto;
+        padding: 0 50px;
+        max-width: 1240px;
+
+        @include mobile {
+            margin: 0;
+            padding: 0;
         }
     }
 
     a {
         text-decoration: none;
     }
+
     .fa-clock {
-        position:relative;
-        right:5px;
+        position: relative;
+        right: 5px;
     }
 }
 
@@ -39,11 +43,15 @@ input[type="text"] {
     justify-content: center;
     align-items: center;
     margin-top: 50px;
+
+    .title-logo {
+        margin-top: 10px;
+    }
 }
 
 @mixin bar-template {
     width: 100%;
-    margin: 25px 0px;
+    margin: 25px 0 0 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -63,8 +71,7 @@ input[type="text"] {
         font-weight: normal;
         font-size: 18px;
         line-height: 22px;
-        // position: relative;
-        // left: 15px;
+
     }
 
     &__button {
@@ -81,11 +88,17 @@ input[type="text"] {
 @mixin recipes-template {}
 
 @mixin buttons-template {
-    margin-bottom: 20px;
+    margin: 20px 0 82px 0;
     display: flex;
-    flex-direction: column;
-    @include breakpoint(tablet) {
-        flex-direction: row;
+
+    @include small-device {
+        margin-bottom: 50px;
+    }
+
+    @include mobile {
+        flex-direction: column;
+        margin: 20px 20px 82px 20px;
+
     }
 
     &__list {
@@ -104,8 +117,7 @@ input[type="text"] {
         display: none;
     }
 
-    &__buttons--blue {
-        background-color: $blue;
+    &__button {
         color: #FFFFFF;
         width: 170px;
         height: 69px;
@@ -114,88 +126,71 @@ input[type="text"] {
         line-height: 22px;
         display: flex;
         justify-content: space-around;
-        align-items: center;
-      
-    }
 
-
-    &__buttons--green {
-        background-color: $green;
-        color: #FFFFFF;
-        width: 170px;
-        height: 69px;
-        border-radius: 5px;
-        text-align: center;
-        line-height: 22px;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        margin-top: 32px;
-        margin-bottom: 32px;
-        
-        @include breakpoint(tablet) {
-            margin-bottom: 0px;
-            margin-top: 0px;
-            margin-left: 32px;
-            margin-right: 32px;
+        &.active {
+            width: 45rem;
         }
     }
 
-    &__buttons--red {
+    #button-blue {
+        background-color: $blue;
+        max-width: 45rem;
+    }
+
+    #button-green {
+        max-width: 170px;
+        background-color: $green;
+        margin: 0 20px 0 20px;
+
+        @include mobile {
+            margin: 20px 0 20px 0;
+        }
+    }
+
+    #button-red {
+        max-width: 170px;
         background-color: $red;
-        color: #FFFFFF;
-        width: 170px;
-        height: 69px;
-        border-radius: 5px;
-        text-align: center;
-        line-height: 22px;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
     }
-    
+
+    &__hidden {
+        display: none;
+        flex-direction: column;
+        z-index: 10;
+
+    }
+
     #blueHidden {
-        display: none;
-        flex-direction: column;
-        position: relative;
-        top: 31.3rem;
         width: 45rem;
-        z-index: 10;
+
+        @include mobile {
+            width: 325px;
+        }
     }
+
     #greenHidden {
-        display: none;
-        flex-direction: column;
-        position: relative;
-        top:31.3rem;
         width: 15rem;
-        z-index: 10;
     }
+
     #redHidden {
-        display: none;
-        flex-direction: column;
-        position: relative;
-        top: 31.3rem;
         width: 15rem;
-        z-index: 10;
     }
-    
-   .blue,
-   .green,
-   .red {
+
+    .blue,
+    .green,
+    .red {
         border-top-right-radius: 5px;
         border-top-left-radius: 5px;
         display: flex;
         align-items: center;
+
         input {
             height: 40px;
-            width:100%;
+            width: 100%;
         }
     }
 
-   .blue {
-        
-        background-color: $blue;
-        
+    .blue {
+
         input {
             padding-left: 7px;
             margin-left: 18px;
@@ -204,8 +199,8 @@ input[type="text"] {
             color: #FFFFFF;
         }
     }
-    
-   .green {
+
+    .green {
         input {
             padding-left: 7px;
             margin-left: 18px;
@@ -214,8 +209,8 @@ input[type="text"] {
             color: #FFFFFF;
         }
     }
-    
-   .red {
+
+    .red {
         input {
             padding-left: 7px;
             margin-left: 18px;
@@ -225,21 +220,26 @@ input[type="text"] {
         }
     }
 
+    &__arrow--down {
+        margin: 25px 0;
+    }
+
     &__arrow {
         padding-right: 20px;
     }
+
     &__list--ingredients {
         background-color: $blue;
     }
-    
+
     &__list--devices {
         background-color: $green;
     }
-    
+
     &__list--ustensils {
         background-color: $red;
     }
-    
+
     &__list--ingredients,
     &__list--devices,
     &__list--ustensils {
@@ -248,15 +248,19 @@ input[type="text"] {
         color: #ffff;
         width: 100%;
     }
-    
+
     &__ul {
-        width: 140px;
         display: flex;
         flex-wrap: wrap;
         flex-direction: column;
-        height: 1000px;
         justify-content: space-evenly;
         padding: .5rem;
+
+        @include mobile {
+            width: 100%;
+            justify-content: center;
+            padding: 0;
+        }
 
         li {
             display: flex;
@@ -265,58 +269,6 @@ input[type="text"] {
             overflow: hidden;
             padding: .3rem 1rem;
             text-align: start;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            width: 9rem;
-        }
-    }
-}
-
-
-/*********************
-BREAKPOINTS
-*********************/
-
-@mixin breakpoint($point) {
-    @if $point==wide {
-        @media (min-width:1441px) {
-            @content ;
-        }
-    }
-
-    @if $point==desktop {
-        @media (min-width:1340px) {
-            @content ;
-        }
-    }
-
-    @else if $point==laptop {
-        @media (min-width: 1024px) {
-            @content ;
-        }
-    }
-
-    @else if $point==tablet {
-        @media (min-width: 768px) {
-            @content ;
-        }
-    }
-
-    @else if $point==mobileL {
-        @media (min-width: 580px) {
-            @content ;
-        }
-    }
-
-    @else if $point==mobileS {
-        @media (min-width: 375px) {
-            @content ;
-        }
-    }
-
-    @else if $point==mobileXS {
-        @media (max-width: 350px) {
-            @content ;
         }
     }
 }

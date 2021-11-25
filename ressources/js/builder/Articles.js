@@ -5,9 +5,8 @@ export default class ArticleTemplate {
      static displayRecipes(recipesArray) {
         recipesArray.forEach((item, index) => {
             let template = `
-                        <svg class="recipes__image" width="380" height="178" viewBox="0 0 380 178" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 5C0 2.23858 2.23858 0 5 0H375C377.761 0 380 2.23858 380 5V178H0V5Z" fill="#C7BEBE"/>
-                        </svg>
+                        <div class="recipes__image">
+                        </div>
                         <div class="recipes__text">
                         <div class="recipes__title">
                         <h2 class="recipes__name">${item.name}</h2>

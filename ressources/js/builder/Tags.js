@@ -11,21 +11,21 @@ export default class Tags {
         this.activeTag;
 
         // SELECT ITEM IN LIST EVENT //
-        this.li.forEach(list => list.addEventListener('click', () => {
+        this.li.forEach(list => list.addEventListener('click', (e) => {
             this.tagsList.style.display = 'flex';
-            if (list.offsetParent.lastElementChild.className === "list__list--ingredients") {
+            if (e.path[2].className === "list__list--ingredients") {
                 this.tags[0].style.display = 'flex';
                 this.tags[0].innerHTML = `<p>${list.innerHTML}</p><i class="far fa-times-circle tags__close"></i>`;
                 this.activeTag = this.tags[0].childNodes[0].innerHTML;
                 new Search(recipes, ingredientsArray, devicesArray, ustensilsArray).checkIfTagExists(this.activeTag, recipesArray);
             } 
-            else if (list.offsetParent.lastElementChild.className === "list__list--devices") {
+            else if (e.path[2].className === "list__list--devices") {
                 this.tags[1].style.display = 'flex';
                 this.tags[1].innerHTML = `<p>${list.innerHTML}</p><i class="far fa-times-circle tags__close"></i>`;
                 this.activeTag = this.tags[1].childNodes[0].innerHTML;
                 new Search(recipes, ingredientsArray, devicesArray, ustensilsArray).checkIfTagExists(this.activeTag, recipesArray);
             }
-            else if (list.offsetParent.lastElementChild.className === "list__list--ustensils") {
+            else if (e.path[2].className === "list__list--ustensils") {
                 this.tags[2].style.display = 'flex';
                 this.tags[2].innerHTML = `<p>${list.innerHTML}</p><i class="far fa-times-circle tags__close"></i>`;
                 this.activeTag = this.tags[2].childNodes[0].innerHTML;
