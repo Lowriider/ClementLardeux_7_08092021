@@ -1,5 +1,5 @@
 'use strict';
-import Search from "../search/Search.js";
+import Search from "../search/Search2.js";
 import ArticleTemplate from "./Articles.js";
 import Buttons from "./Buttons.js";
 
