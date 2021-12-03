@@ -12,24 +12,25 @@ export default class Tags {
 
         // SELECT ITEM IN LIST EVENT //
         this.li.forEach(list => list.addEventListener('click', (e) => {
+            console.log('ok')
             this.tagsList.style.display = 'flex';
             if (e.path[2].className === "list__list--ingredients") {
                 this.tags[0].style.display = 'flex';
                 this.tags[0].innerHTML = `<p>${list.innerHTML}</p><i class="far fa-times-circle tags__close"></i>`;
                 this.activeTag = this.tags[0].childNodes[0].innerHTML;
-                new Search(recipes, ingredientsArray, devicesArray, ustensilsArray).checkIfTagExists(this.activeTag, recipesArray);
+                new Search(recipes, ingredientsArray, devicesArray, ustensilsArray).checkIfRecipeExists(this.activeTag);
             } 
             else if (e.path[2].className === "list__list--devices") {
                 this.tags[1].style.display = 'flex';
                 this.tags[1].innerHTML = `<p>${list.innerHTML}</p><i class="far fa-times-circle tags__close"></i>`;
                 this.activeTag = this.tags[1].childNodes[0].innerHTML;
-                new Search(recipes, ingredientsArray, devicesArray, ustensilsArray).checkIfTagExists(this.activeTag, recipesArray);
+                new Search(recipes, ingredientsArray, devicesArray, ustensilsArray).checkIfRecipeExists(this.activeTag);
             }
             else if (e.path[2].className === "list__list--ustensils") {
                 this.tags[2].style.display = 'flex';
                 this.tags[2].innerHTML = `<p>${list.innerHTML}</p><i class="far fa-times-circle tags__close"></i>`;
                 this.activeTag = this.tags[2].childNodes[0].innerHTML;
-                new Search(recipes, ingredientsArray, devicesArray, ustensilsArray).checkIfTagExists(this.activeTag, recipesArray);
+                new Search(recipes, ingredientsArray, devicesArray, ustensilsArray).checkIfRecipeExists(this.activeTag);
             }
             else {}
 
@@ -43,7 +44,7 @@ export default class Tags {
                 document.querySelector('.recipes').innerHTML = "";
                 ArticleTemplate.displayRecipes(recipesArray);
                 document.querySelectorAll('.list__ul').forEach(list => list.innerHTML = "")
-                Buttons.displayButtons(ingredientsArray, ustensilsArray, devicesArray);
+                Buttons.fillLists(ingredientsArray, ustensilsArray, devicesArray);
                 new Tags(recipesArray, ingredientsArray, devicesArray, ustensilsArray);
             }));
         }));

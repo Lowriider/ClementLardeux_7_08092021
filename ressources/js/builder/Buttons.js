@@ -7,25 +7,18 @@ export default class Buttons {
     constructor(ingredientsArray, devicesArray, ustensilsArray, recipesArray) {
 
         document.querySelectorAll('.list__arrow').forEach(button => button.addEventListener('click', function(e) {
-
-            e.path[2].style.display = "none";
-            e.path[3].children[0].style.display = "block";                          // display title
-            e.path[3].children[1].style.display = "block";                     // display arrow
-            e.path[3].classList.remove('active');
-            e.target.parentElement.children[0].value = '';
-            document.querySelectorAll('.list__ul').forEach(list => list.innerHTML = '')
-            Buttons.displayButtons(ingredientsArray, devicesArray, ustensilsArray);
-            Buttons.displayList();
+            Buttons.closeList(recipesArray, ingredientsArray, ustensilsArray, devicesArray);
+            Buttons.fillLists(ingredientsArray, devicesArray, ustensilsArray);
             new Tags(recipesArray, ingredientsArray, devicesArray, ustensilsArray);
 
-        }.bind(this)));
+        }));
 
-        Buttons.displayButtons(ingredientsArray, devicesArray, ustensilsArray);
+        Buttons.fillLists(ingredientsArray, devicesArray, ustensilsArray);
         Buttons.displayList(recipesArray, ingredientsArray, ustensilsArray, devicesArray);
-        new ListSearch();
+        new ListSearch(ingredientsArray, devicesArray, ustensilsArray);
     }
 
-    static displayButtons(ingredientsArray, devicesArray, ustensilsArray) {
+    static fillLists(ingredientsArray, devicesArray, ustensilsArray) {
         document.querySelectorAll('.list__ul').forEach((list, index) => {
             if (index === 0) {
                 ingredientsArray.forEach(ingredients => {
@@ -52,15 +45,21 @@ export default class Buttons {
     static displayList() {
         document.querySelectorAll('.list__text').forEach(button => button.addEventListener('click', function (e) {
                 button.style.display = "none";
+                console.log(button.parentElement.children[2])
                 button.parentElement.children[1].style.display = "none";
-                button.parentElement.children[2].style.display = 'block';
+                button.parentElement.children[2].style.display = 'flex';
                 e.target.parentElement.classList.add('active');
+                e.target.parentElement.lastElementChild.children[1].children[0].classList.add('active');
         }));
 
     }
     static closeList(recipesArray, ingredientsArray, ustensilsArray, devicesArray) {
+
         document.querySelectorAll('.list__hidden').forEach(hidden => hidden.style.display = 'none')
-        Array.from(document.querySelectorAll('.list')[0].children).forEach(buttons => buttons.style.width = '170px');
+        Array.from(document.querySelectorAll('.list')[0].children).forEach(button => {
+            button.style.width = null;
+            button.classList.remove('active')
+        });
         document.querySelectorAll('.list__arrow--down').forEach(arrow => arrow.style.display = 'block');
         document.querySelectorAll('.list__text').forEach(input => input.style.display = 'block');
         document.querySelectorAll('.list__ul').forEach(list => list.innerHTML = '');

@@ -156,6 +156,21 @@ a {
 .list__button.active {
   width: 45rem;
 }
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .list__button.active {
+    width: 400px;
+  }
+}
+@media (max-width: 1023px) {
+  .list__button.active {
+    width: 300px;
+  }
+}
+@media (max-width: 767px) {
+  .list__button.active {
+    width: 170px;
+  }
+}
 .list #button-blue {
   background-color: #3282F7;
   max-width: 45rem;
@@ -253,8 +268,10 @@ a {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  justify-content: space-evenly;
   padding: 0.5rem;
+  height: auto;
+  max-height: 400px;
+  overflow: hidden;
 }
 @media (max-width: 767px) {
   .list__ul {
@@ -266,10 +283,17 @@ a {
 .list__ul li {
   display: flex;
   flex-direction: row;
-  font-size: 1.21rem;
+  font-family: Lato;
+  font-size: 18px;
+  line-height: 22px;
   overflow: hidden;
   padding: 0.3rem 1rem;
   text-align: start;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.list__ul li:nth-child(13), .list__ul li:nth-child(14) {
+  display: none;
 }
 
 .search-result {

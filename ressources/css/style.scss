@@ -16,6 +16,7 @@
     display: none;
     margin: 35px 0 25px 0;
     height: 63px;
+
     @include mobile {
         margin: 35px 20px 25px 20px;
     }
@@ -54,7 +55,211 @@
 }
 
 .list {
-    @include buttons-template;
+    margin: 20px 0 82px 0;
+    display: flex;
+
+    @include small-device {
+        margin-bottom: 50px;
+    }
+
+    @include mobile {
+        flex-direction: column;
+        margin: 20px 20px 82px 20px;
+
+    }
+
+    &__list {
+        display: none;
+    }
+
+    &__text {
+        color: white;
+        padding: 0;
+        border: none;
+        background: none;
+        font-size: 18px;
+    }
+
+    &__text:target {
+        display: none;
+    }
+
+    &__button {
+        color: #FFFFFF;
+        width: 170px;
+        height: 69px;
+        border-radius: 5px;
+        text-align: center;
+        line-height: 22px;
+        display: flex;
+        justify-content: space-around;
+
+        &.active {
+            width: 45rem;
+
+            @include desktop {
+                width: 400px;
+            }
+
+            @include small-device {
+                width: 300px;
+            }
+
+            @include mobile {
+                width: 170px;
+            }
+        }
+    }
+
+    #button-blue {
+        background-color: $blue;
+        max-width: 45rem;
+    }
+
+    #button-green {
+        max-width: 170px;
+        background-color: $green;
+        margin: 0 20px 0 20px;
+
+        @include mobile {
+            margin: 20px 0 20px 0;
+        }
+    }
+
+    #button-red {
+        max-width: 170px;
+        background-color: $red;
+    }
+
+    &__hidden {
+        display: none;
+        flex-direction: column;
+        z-index: 10;
+
+    }
+
+    #blueHidden {
+        width: 45rem;
+
+        @include mobile {
+            width: 325px;
+        }
+    }
+
+    #greenHidden {
+        width: 15rem;
+    }
+
+    #redHidden {
+        width: 15rem;
+    }
+
+    .blue,
+    .green,
+    .red {
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        display: flex;
+        align-items: center;
+
+        input {
+            height: 40px;
+            width: 100%;
+        }
+    }
+
+    .blue {
+
+        input {
+            padding-left: 7px;
+            margin-left: 18px;
+            background-color: $blue;
+            border: none;
+            color: #FFFFFF;
+        }
+    }
+
+    .green {
+        input {
+            padding-left: 7px;
+            margin-left: 18px;
+            background-color: $green;
+            border: none;
+            color: #FFFFFF;
+        }
+    }
+
+    .red {
+        input {
+            padding-left: 7px;
+            margin-left: 18px;
+            background-color: $red;
+            border: none;
+            color: #FFFFFF;
+        }
+    }
+
+    &__arrow--down {
+        margin: 25px 0;
+    }
+
+    &__arrow {
+        padding-right: 20px;
+    }
+
+    &__list--ingredients {
+        background-color: $blue;
+    }
+
+    &__list--devices {
+        background-color: $green;
+    }
+
+    &__list--ustensils {
+        background-color: $red;
+    }
+
+    &__list--ingredients,
+    &__list--devices,
+    &__list--ustensils {
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+        color: #ffff;
+        width: 100%;
+    }
+
+    &__ul {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        padding: .5rem;
+        height: auto;
+        max-height: 400px;
+        overflow: hidden;
+
+        @include mobile {
+            width: 100%;
+            justify-content: center;
+            padding: 0;
+        }
+        
+        li {
+            display: flex;
+            flex-direction: row;
+            font-family: Lato;
+            font-size: 18px;
+            line-height: 22px;
+            overflow: hidden;
+            padding: .3rem 1rem;
+            text-align: start;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            &:nth-child(13),&:nth-child(14) {
+                display: none;
+            }
+        }
+
+    }
 }
 
 .search-result {
@@ -88,18 +293,20 @@
         position: relative;
         width: calc((100% / 3) - 33px);
         border-radius: 10px;
+
         @include small-device() {
-                width: calc((100% / 2) - 10px);
-            }
-        @include mobile() {
-                width: 100%;
+            width: calc((100% / 2) - 10px);
         }
-      
-        
+
+        @include mobile() {
+            width: 100%;
+        }
+
+
     }
 
     &__image {
-        background-color:  #C7BEBE;
+        background-color: #C7BEBE;
         height: 178px;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
@@ -116,6 +323,7 @@
     &__text {
         margin: 20px;
     }
+
     &__title {
         display: flex;
         justify-content: space-between;
