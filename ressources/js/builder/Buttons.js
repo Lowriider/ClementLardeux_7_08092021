@@ -45,7 +45,6 @@ export default class Buttons {
     static displayList() {
         document.querySelectorAll('.list__text').forEach(button => button.addEventListener('click', function (e) {
                 button.style.display = "none";
-                console.log(button.parentElement.children[2])
                 button.parentElement.children[1].style.display = "none";
                 button.parentElement.children[2].style.display = 'flex';
                 e.target.parentElement.classList.add('active');

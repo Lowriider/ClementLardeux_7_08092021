@@ -21,7 +21,7 @@ export default class Search {
             Buttons.closeList(result, newIngredientsArray, newUstensilsArray, newDevicesArray);
             Buttons.fillLists( newIngredientsArray, newUstensilsArray, newDevicesArray);
             new Tags(this.recipes, this.ingredientsArray, this.devicesArray, this.ustensilsArray);
-            console.timeEnd('test');
+
         } else {
             document.querySelector('.search-result').style.display = 'flex';
             document.querySelector('.search-result').style.backgroundColor = 'rgb(255, 233, 165)';
@@ -61,7 +61,7 @@ export default class Search {
         let input = this.searchInput.value.toLowerCase();
         let result = [];
         if (tag.length > 0) {
-            console.log(tag)
+
             for (let i = 0; i < this.recipes.length; i++) {
                 for (let j = 0; j < this.recipes[i].ingredients.length; j++) {
                     if (this.recipes[i].ingredients[j].ingredient.toLowerCase().includes(tag)) {
@@ -76,7 +76,7 @@ export default class Search {
                     }
                 }
                 for (let h = 0; h < this.recipes[i].ustensils.length; h++) {
-                    console.log(this.recipes[i])
+
                     if (this.recipes[i].ustensils[h].toLowerCase().includes(tag)) {
                         if (!result.includes(this.recipes[i])) {
                             result.push(this.recipes[i])
