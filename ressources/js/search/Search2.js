@@ -10,7 +10,7 @@ export default class Search {
         this.ustensilsArray = ustensilsArray;
         this.recipes = recipes;
         this.searchInput = document.querySelector(".search__bar");
-        this.searchInput.addEventListener('keyup', this.checkIfInputExists.bind(this))
+        this.searchInput.addEventListener('keyup', this.checkInput.bind(this))
     }
     searchRender(result, newIngredientsArray, newUstensilsArray, newDevicesArray) {
         if (result.length > 0) {
@@ -19,7 +19,7 @@ export default class Search {
             document.querySelector('.recipes').innerHTML = "";
             ArticleTemplate.displayRecipes(result);
             Buttons.closeList(result, newIngredientsArray, newUstensilsArray, newDevicesArray);
-            Buttons.displayButtons( newIngredientsArray, newUstensilsArray, newDevicesArray);
+            Buttons.fillLists( newIngredientsArray, newUstensilsArray, newDevicesArray);
             new Tags(this.recipes, this.ingredientsArray, this.devicesArray, this.ustensilsArray);
             console.timeEnd('test');
         } else {
@@ -29,12 +29,12 @@ export default class Search {
         }
     }
 
-    checkIfInputExists() {
+    checkInput() {
         let input = this.searchInput.value.toLowerCase();
         let result = [];
 
         if (input.length > 2) {
-            console.time('test');
+           
             for (let i = 0; i < this.recipes.length; i++) {
                 for (let j = 0; j < this.recipes[i].ingredients.length; j++) {
                     if (this.recipes[i].ingredients[j].ingredient.toLowerCase().includes(input)) {
@@ -56,16 +56,12 @@ export default class Search {
             }
             this.newArray(result);
         }
-        if(input.length === 0 ) {
-            document.querySelector('.recipes').innerHTML = "";
-            ArticleTemplate.displayRecipes(recipes);
-        }
     }
-    checkIfTagExists(tag) {
-
+    checkIfRecipeExists(tag) {
+        let input = this.searchInput.value.toLowerCase();
         let result = [];
         if (tag.length > 0) {
-            console.time('test');
+            console.log(tag)
             for (let i = 0; i < this.recipes.length; i++) {
                 for (let j = 0; j < this.recipes[i].ingredients.length; j++) {
                     if (this.recipes[i].ingredients[j].ingredient.toLowerCase().includes(tag)) {
@@ -80,13 +76,23 @@ export default class Search {
                     }
                 }
                 for (let h = 0; h < this.recipes[i].ustensils.length; h++) {
-                    if (this.recipes[i].ustensils.toLowerCase().includes(tag)) {
+                    console.log(this.recipes[i])
+                    if (this.recipes[i].ustensils[h].toLowerCase().includes(tag)) {
                         if (!result.includes(this.recipes[i])) {
                             result.push(this.recipes[i])
                         }
                     }
                 }
                 this.newArray(result);
+            }
+        } else {
+            this.CheckInput();
+            if (input.length === input.length - 1 && input.length > 2) {
+                this.CheckInput();
+            }   
+            else if(input.length === 0) {
+                document.querySelector('.recipes').innerHTML = "";
+                ArticleTemplate.displayRecipes(recipes);
             }
         }
     }
