@@ -12,7 +12,7 @@ export default class Tags {
 
         // SELECT ITEM IN LIST EVENT //
         this.li.forEach(list => list.addEventListener('click', (e) => {
-            console.log('ok')
+
             this.tagsList.style.display = 'flex';
             if (e.path[2].className === "list__list--ingredients") {
                 this.tags[0].style.display = 'flex';
