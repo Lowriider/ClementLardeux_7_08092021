@@ -139,6 +139,7 @@ a {
   border: none;
   background: none;
   font-size: 18px;
+  cursor: pointer;
 }
 .list__text:target {
   display: none;
@@ -247,6 +248,7 @@ a {
   margin: 25px 0;
 }
 .list__arrow {
+  cursor: pointer;
   padding-right: 20px;
 }
 .list__list--ingredients {

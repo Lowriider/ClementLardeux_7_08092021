@@ -78,6 +78,7 @@
         border: none;
         background: none;
         font-size: 18px;
+        cursor: pointer;
     }
 
     &__text:target {
@@ -204,6 +205,7 @@
     }
 
     &__arrow {
+        cursor: pointer;
         padding-right: 20px;
     }
 
