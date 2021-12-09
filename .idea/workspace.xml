@@ -6,9 +6,6 @@
       <change beforePath="$PROJECT_DIR$/ressources/css/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/ressources/css/style.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ressources/css/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/ressources/css/style.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ressources/css/utils/_mixins.scss" beforeDir="false" afterPath="$PROJECT_DIR$/ressources/css/utils/_mixins.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/js/builder/Buttons.js" beforeDir="false" afterPath="$PROJECT_DIR$/ressources/js/builder/Buttons.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/js/builder/Tags.js" beforeDir="false" afterPath="$PROJECT_DIR$/ressources/js/builder/Tags.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ressources/js/search/ListSearch.js" beforeDir="false" afterPath="$PROJECT_DIR$/ressources/js/search/ListSearch.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ressources/js/search/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/ressources/js/search/Search.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,6 +40,7 @@
       <option name="presentableId" value="Default" />
       <updated>1638525313571</updated>
       <workItem from="1638525317157" duration="37000" />
+      <workItem from="1638777618584" duration="35000" />
     </task>
     <servers />
   </component>
@@ -59,5 +57,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

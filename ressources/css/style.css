@@ -271,9 +271,13 @@ a {
   flex-wrap: wrap;
   flex-direction: column;
   padding: 0.5rem;
-  height: auto;
   max-height: 400px;
   overflow: hidden;
+}
+@media (max-width: 1023px) {
+  .list__ul {
+    max-height: unset;
+  }
 }
 @media (max-width: 767px) {
   .list__ul {
@@ -283,16 +287,11 @@ a {
   }
 }
 .list__ul li {
-  display: flex;
-  flex-direction: row;
   font-family: Lato;
   font-size: 18px;
   line-height: 22px;
-  overflow: hidden;
   padding: 0.3rem 1rem;
   text-align: start;
-  text-overflow: ellipsis;
-  overflow: hidden;
 }
 .list__ul li:nth-child(13), .list__ul li:nth-child(14) {
   display: none;

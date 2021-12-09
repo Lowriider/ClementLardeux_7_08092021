@@ -47,6 +47,7 @@ export default class Search {
     }
     checkIfRecipeExists(tag) {
         let input = this.searchInput.value.toLowerCase();
+        
         if (tag.length > 0) {
             let result = recipes.filter(recipe => {
                 let resultIngredients = recipe.ingredients.map(ingredient => ingredient.ingredient).join();
